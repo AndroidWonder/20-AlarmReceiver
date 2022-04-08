@@ -10,7 +10,7 @@ public class WakeUpReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Toast.makeText(context, "Don't panik but your time is up!!!!.",
+        Toast.makeText(context, "Don't panic but your time is up!!!!.",
                 Toast.LENGTH_LONG).show();
 
         // Vibrate the mobile phone
