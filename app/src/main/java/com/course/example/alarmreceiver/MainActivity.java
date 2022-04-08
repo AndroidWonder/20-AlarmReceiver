@@ -17,22 +17,26 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    //this is a listener method for the button click
     public void startAlert(View view) {
+        int requestCode = 123;
+
         EditText text = (EditText) findViewById(R.id.time);
         int i = Integer.parseInt(text.getText().toString());
-        int requestCode = 123;
+
+        //create intent object for a broadcast
         Intent intent = new Intent(this, WakeUpReceiver.class);
 
-        //create pendingIntent that will start a broadcast
+        //create pendingIntent that will send a broadcast
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), requestCode, intent, 0);
 
-        //create an alarm to trigger to wake up device when it goes off.
+        //create an alarm to trigger intent when it goes off.
         //it triggers in the number of seconds input
         AlarmManager alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
         alarmManager.set(AlarmManager.RTC_WAKEUP, System.currentTimeMillis()
                 + (i * 1000), pendingIntent);
 
-        Toast.makeText(this, "Alarm set in " + i + " seconds",
+        Toast.makeText(this, "Alarm set for " + i + " seconds",
                 Toast.LENGTH_LONG).show();
 
         finish();
