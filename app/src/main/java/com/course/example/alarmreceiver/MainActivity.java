@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, WakeUpReceiver.class);
 
         //create pendingIntent that will send a broadcast
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), requestCode, intent, 0);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), requestCode, intent, PendingIntent.FLAG_IMMUTABLE);
 
         //create an alarm to trigger intent when it goes off.
         //it triggers in the number of seconds input
